@@ -56,7 +56,8 @@ async function ensureDir(path) {
 async function main() {
   const distPath = "../../dist";
   await ensureDir(distPath);
-  const mdFiles = await fg(["../../data/**/*.md"]);
+  const dataRoot = "../../data";
+  const mdFiles = await fg([dataRoot + "/**/*.md"]);
   const data = {
     created: new Date().toISOString(),
     entries: [] as MdData[],
@@ -66,6 +67,10 @@ async function main() {
     const text = await fs.readFile(fpath, "utf-8");
     console.log("text", text);
     const entry = processMdFile(text);
+    entry.id = fpath
+      .replace(dataRoot + "/", "")
+      .replace(/\//g, "-")
+      .replace(/\./, "");
     data.entries.push(entry);
     // console.log(JSON.stringify(entry));
     // break;

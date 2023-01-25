@@ -1,8 +1,5 @@
 <script lang="ts">
-	import Counter from './Counter.svelte';
-	// import welcome from '$lib/images/svelte-welcome.webp';
-	// import welcome_fallback from '$lib/images/svelte-welcome.png';
-	// import dataJson from '$lib/../../../../dist/data.json';
+	import { onMount, afterUpdate } from 'svelte';
 	import dataJson from '@gitroot/dist/data.json';
 	import type { MdData } from '@gitroot/tools/mds-to-jsons/types';
 
@@ -34,14 +31,14 @@
 		const entries = [];
 		for (const entry of dataJson.entries) {
 			for (const clip of entry.clips) {
-				let found = false;
+				let found = 0;
 				for (const tag of clip.tags) {
 					if (filters[tag]) {
-						found = true;
-						break;
+						found += 1;
 					}
 				}
-				if (found) {
+				if (found === filtersOnCount) {
+					// Found all the selected filters in this clip
 					entries.push(entry);
 				}
 			}
@@ -66,8 +63,62 @@
 		// https://www.youtube.com/embed/sz2W3QfXnHc?start=33&end=200
 		const vidId = youtubeParser(entry.link);
 		const startSec = minutesTextToSec(entry.clips[0].start);
-		const endSec = minutesTextToSec(entry.clips[0].end);
-		return `https://www.youtube.com/embed/${vidId}?start=${startSec}&end=${endSec}&autoplay=1&loop=1`;
+		//const endSec = minutesTextToSec(entry.clips[0].end);
+		//&end=${endSec}
+		return `https://www.youtube.com/embed/${vidId}?start=${startSec}&autoplay=1&loop=1&enablejsapi=1`;
+	}
+
+	const ytPlayers: { [key: string]: any } = {};
+	const playerEntries: { [key: string]: MdData } = {};
+
+	onMount(async () => {
+		const tag = document.createElement('script');
+		tag.src = 'https://www.youtube.com/iframe_api';
+		const headTag = document.getElementsByTagName('head')[0];
+		headTag.appendChild(tag);
+
+		// const firstScriptTag = document.getElementsByTagName('script')[0];
+		// (firstScriptTag.parentNode as Element).insertBefore(tag, firstScriptTag);
+		(window as any).onYouTubeIframeAPIReady = function () {
+			console.log('onYouTubeIframeAPIReady');
+		};
+
+		setInterval(loopVideos, 500);
+	});
+
+	function loopVideos() {
+		for (const key in ytPlayers) {
+			const player = ytPlayers[key];
+			if (player.getPlayerState() === 1) {
+				// playing
+				const timeSeconds = player.getCurrentTime();
+				const clip = playerEntries[key].clips[0];
+				const endSeconds = minutesTextToSec(clip.end);
+				if (timeSeconds > endSeconds) {
+					const startSeconds = minutesTextToSec(clip.start);
+					player.seekTo(startSeconds);
+				}
+			}
+		}
+	}
+
+	afterUpdate(async () => {
+		for (const entry of filteredEntries()) {
+			const player = new (window as any).YT.Player(entry.id, {
+				events: {
+					onStateChange: onPlayerStateChange
+				}
+			});
+			ytPlayers[entry.id] = player;
+			playerEntries[entry.id] = entry;
+		}
+	});
+
+	function onPlayerStateChange(event: any) {
+		console.log('onPlayerStateChange', event);
+		//player.seekTo(seconds:Number, allowSeekAhead:Boolean):Void
+		//player.getCurrentTime()
+		// player.getPlayerState() (1 is playing)
 	}
 </script>
 
@@ -97,6 +148,7 @@
 				{entry.title}<a href={entry.link}>🔗</a>
 				<p>{entry.clips[0].tags.join(', ')}</p>
 				<iframe
+					id={entry.id}
 					title={entry.title}
 					width="560"
 					height="315"

@@ -6,6 +6,7 @@ export class Clip {
 
 export class MdData {
   title: string = "";
+  id: string = "";
   link: string = "";
   date: string = "";
   who: string[] = [];
