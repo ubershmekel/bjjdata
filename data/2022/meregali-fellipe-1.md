@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=8Hydk5Erhvc
 
 Who: Nicholas Meregali
 
-Who2: Fellipe Andrew
+Who: Fellipe Andrew
 
 Date: 2022
 

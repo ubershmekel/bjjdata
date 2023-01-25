@@ -1,0 +1,19 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mds-to-jsons": "tsx mds-to-jsons.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-glob": "^3.2.12",
+    "tsx": "^3.12.2",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18"
+  }
+}

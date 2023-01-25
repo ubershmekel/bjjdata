@@ -4,7 +4,7 @@ Link: https://www.youtube.com/watch?v=UmnDlhrwlXY
 
 Who: Tainan Dalpra
 
-Who2: Caio Caetano
+Who: Caio Caetano
 
 Date: 2022
 

@@ -6,6 +6,6 @@ Date: 2022
 
 Who: Tainan Dalpra
 
-Who2: Roberto Jimenez
+Who: Roberto Jimenez
 
 Clip: 1:43 - 1:58 - tournament, gi, triangle, choke

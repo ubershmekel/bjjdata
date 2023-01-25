@@ -4,7 +4,7 @@ Link: https://www.youtube.com/watch?v=4otDPTc7_Ok
 
 Who: Nicholas Meregali
 
-Who2: Wallace Costa
+Who: Wallace Costa
 
 Tags: tournament
 
