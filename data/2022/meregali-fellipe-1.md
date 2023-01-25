@@ -8,4 +8,4 @@ Who: Fellipe Andrew
 
 Date: 2022
 
-5:24 - 5:30 - tournament, back, choke, collar choke, sliding collar choke, gi
+Clip: 5:24 - 5:30 - tournament, back, choke, collar choke, sliding collar choke, gi

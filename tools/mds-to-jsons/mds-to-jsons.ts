@@ -1,19 +1,7 @@
 import fg from "fast-glob";
-import { MakeDirectoryOptions, promises as fs } from "fs";
+import { promises as fs } from "fs";
 
-class Clip {
-  start: string = "";
-  end: string = "";
-  tags: string[] = [];
-}
-
-class MdData {
-  header: string = "";
-  link: string = "";
-  date: string = "";
-  who: string[] = [];
-  clips: Clip[] = [];
-}
+import { Clip, MdData } from "./types";
 
 function applyKeyValue(data: MdData, key: string, val: string) {
   if (key === "who") {
@@ -22,9 +10,11 @@ function applyKeyValue(data: MdData, key: string, val: string) {
   }
   if (key === "clip") {
     const clip = new Clip();
-    const [start, end, ...tags] = val.split(/[\-,]/g);
-    clip.start = start;
-    clip.end = end;
+    const [start, end, ...tagsClunky] = val.split("-");
+    // Some tags contain '-' so we need to resplit `tagsClunky`
+    const tags = tagsClunky.join("-").split(",");
+    clip.start = start.trim();
+    clip.end = end.trim();
     clip.tags = tags.map((it) => it.trim().toLowerCase());
     data.clips.push(clip);
     return;
@@ -44,7 +34,7 @@ function processMdFile(text: string) {
       continue;
     }
     if (line[0] === "#") {
-      data.header = line.slice(1).trim();
+      data.title = line.slice(1).trim();
       continue;
     } else {
       const sepIndex = line.indexOf(":");
@@ -64,8 +54,9 @@ async function ensureDir(path) {
 }
 
 async function main() {
-  await ensureDir("../dist");
-  const mdFiles = await fg(["../data/**/*.md"]);
+  const distPath = "../../dist";
+  await ensureDir(distPath);
+  const mdFiles = await fg(["../../data/**/*.md"]);
   const data = {
     created: new Date().toISOString(),
     entries: [] as MdData[],
@@ -79,7 +70,11 @@ async function main() {
     // console.log(JSON.stringify(entry));
     // break;
   }
-  fs.writeFile("../dist/data.json", JSON.stringify(data, null, 2));
+  if (data.entries.length === 0) {
+    console.error("found no entries, failed somehow");
+    process.exit(1);
+  }
+  fs.writeFile(`${distPath}/data.json`, JSON.stringify(data, null, 2));
 }
 
 main();
