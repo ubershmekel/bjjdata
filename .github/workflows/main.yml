@@ -32,8 +32,8 @@ jobs:
 
       - name: npm run mds-to-jsons
         run: |
+          cd tools/mds-to-jsons
           npm run mds-to-jsons
-          cd ../..
 
       - name: npm install site
         run: |
@@ -41,10 +41,12 @@ jobs:
           npm install
 
       - name: npm run build
-        run: npm run build
+        run: |
+          cd tools/site
+          npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+          folder: tools/site/build # The folder the action should deploy.
