@@ -120,6 +120,10 @@
 		//player.getCurrentTime()
 		// player.getPlayerState() (1 is playing)
 	}
+
+	function youtubeTimeLink(entry: MdData) {
+		return entry.link + '&t=' + minutesTextToSec(entry.clips[0].start);
+	}
 </script>
 
 <svelte:head>
@@ -129,6 +133,13 @@
 
 <section>
 	<h1>BJJ Data</h1>
+
+	<p>
+		This website is an open source collection of video clips of submissions, performed by world
+		champions during tournaments. The idea is to make it easier to analyze Brazilian jiu-jitsu
+		details that have been proven to work. Click the filters below to narrow down the clips you'd
+		like to see.
+	</p>
 
 	<ul class="filters">
 		{#each allTags as tag}<li>
@@ -145,7 +156,7 @@
 	<div class="all-vid-cards">
 		{#each filteredEntries() as entry}
 			<div class="vid-card">
-				{entry.title}<a href={entry.link}>🔗</a>
+				{entry.title}<a href={youtubeTimeLink(entry)}>🔗</a>
 				<p>{entry.clips[0].tags.join(', ')}</p>
 				<iframe
 					id={entry.id}
