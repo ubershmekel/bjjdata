@@ -65,7 +65,7 @@
 		const startSec = minutesTextToSec(entry.clips[0].start);
 		//const endSec = minutesTextToSec(entry.clips[0].end);
 		//&end=${endSec}
-		return `https://www.youtube.com/embed/${vidId}?start=${startSec}&autoplay=1&loop=1&enablejsapi=1`;
+		return `https://www.youtube.com/embed/${vidId}?start=${startSec}&enablejsapi=1`;
 	}
 
 	const ytPlayers: { [key: string]: any } = {};
