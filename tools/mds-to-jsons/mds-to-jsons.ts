@@ -54,8 +54,6 @@ async function ensureDir(path) {
 }
 
 async function main() {
-  const distPath = "../../dist";
-  await ensureDir(distPath);
   const dataRoot = "../../data";
   const mdFiles = await fg([dataRoot + "/**/*.md"]);
   const data = {
@@ -79,7 +77,12 @@ async function main() {
     console.error("found no entries, failed somehow");
     process.exit(1);
   }
-  fs.writeFile(`${distPath}/data.json`, JSON.stringify(data, null, 2));
+  const distPath = "../../dist";
+  await ensureDir(distPath);
+  const jsonText = JSON.stringify(data);
+  fs.writeFile(`${distPath}/data.json`, jsonText);
+  const staticPath = "../site/static/data.json";
+  fs.writeFile(staticPath, jsonText);
 }
 
 main();

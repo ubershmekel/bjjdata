@@ -1,2 +1,3 @@
 dist
 node_modules
+tools/site/static/data.json
