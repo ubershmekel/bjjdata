@@ -161,7 +161,7 @@
 				<iframe
 					id={entry.id}
 					title={entry.title}
-					width="560"
+					width="100%"
 					height="315"
 					src={youtubeIframeLink(entry)}
 					frameborder="0"
