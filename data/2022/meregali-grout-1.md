@@ -8,4 +8,4 @@ Who: Nicholas Meregali
 
 Who: Breylor Grout
 
-Clip: 13:10 - 13:20 - tournament, no-gi, choke, back, arm triangle
+Clip: 13:10 - 13:20 - tournament, no-gi, choke, back, arm-triangle
