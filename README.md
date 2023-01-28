@@ -4,20 +4,15 @@ Organizing links to clips of submissions with metadata
 
 # Why make another bjj db?
 
-I saw bjjheroes, tapology, drub.co, bjjcollective, and they were all out of date or difficult to browse. It's hard to curate useful data. It needs to be a community effort.
-But when the data is privately held, there is no incentive to contribute. So I thought I'd try and organize an open source collection of bjj data.
+I saw bjjheroes, tapology, drub.co, bjjcollective, and they were all out of date or difficult to browse. It's hard to curate useful data to learn submission details. But when the data is privately held, there is no incentive to contribute. So I thought I'd try and organize an open source collection of bjj data.
 
-It's not just mine. It's MIT licensed, so you can copy this repo to make this data yours if you like.
+The data here is not just mine. It's MIT licensed, so you can copy this repo to make the data yours if you like.
 
-# Goals
+# What kind of BJJ data is here?
 
 While I enjoy instructional videos, it's hard to judge if the advice is sound. High level competition results don't lie.
 
-So this repo is initially focused on curating timestamped YouTube links to submissions in competitons involving athletes who have won world championships.
-
-# How to use the data on your site
-
-You can clone this repo and use the markdown, or just fetch https://ubershmekel.github.io/bjjdata/data.json
+So this repo is focused on curating timestamped YouTube links to submissions in competitions involving world champions.
 
 # How to add a clip to this site?
 
@@ -36,3 +31,15 @@ Your contributions are welcome.
 6. Make sure the submission clip time ends just 2-3 seconds after the tap, so we can see the tap.
 
 7. Then click "propose new file" and create the pull request.
+
+# Criteria for clips
+
+- Clearly see the submission and details
+
+- In a tournament, preferably 2-3 years old or newer
+
+- The match is between a championship winner and at least a championship quarter finalist
+
+# How to use the data on your site
+
+You can clone this repo and use the markdown, or just fetch https://ubershmekel.github.io/bjjdata/data.json
