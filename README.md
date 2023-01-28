@@ -17,7 +17,7 @@ So this repo is initially focused on curating timestamped YouTube links to submi
 
 # How to use the data on your site
 
-You can fetch https://ubershmekel.github.io/bjjdata/data.json
+You can clone this repo and use the markdown, or just fetch https://ubershmekel.github.io/bjjdata/data.json
 
 # How to add a clip to this site?
 

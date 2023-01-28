@@ -135,10 +135,10 @@
 	<h1>BJJ Data</h1>
 
 	<p>
-		This website is an open source collection of video clips of submissions, performed by world
-		champions during tournaments. The idea is to make it easier to analyze Brazilian jiu-jitsu
-		details that have been proven to work. Click the filters below to narrow down the clips you'd
-		like to see.
+		This website is an open source collection of {dataJson.entries.length} YouTube clips of submissions,
+		performed by world champions during tournaments. The idea is to make it easier to analyze Brazilian
+		jiu-jitsu details that have been proven to work. Click the filters below to narrow down the clips
+		you'd like to see.
 	</p>
 
 	<ul class="filters">
@@ -172,7 +172,9 @@
 	</div>
 
 	<p>
-		<a href="https://github.com/ubershmekel/bjjdata">Github</a> data processing date: {dataJson.created}
+		Contribute clips on <a href="https://github.com/ubershmekel/bjjdata">Github</a>. Data processing
+		date: {dataJson.created}. Fetch the
+		<a href="https://ubershmekel.github.io/bjjdata/data.json">JSON data</a> to embed it on your site.
 	</p>
 </section>
 
