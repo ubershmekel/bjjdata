@@ -8,4 +8,4 @@ Who: Nicholas Meregali
 
 Who: Fellipe Andrew
 
-Clip: 5:44 - 5:50 - tournament, gi, armbar, open-weight
+Clip: 5:44 - 5:50 - tournament, gi, armbar, open-weight, joint lock

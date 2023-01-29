@@ -8,4 +8,4 @@ Who: Renato Canuto
 
 Who: Jake Shields
 
-Clip: 7:37 - 7:48 - no-gi, tournament, armbar, flying
+Clip: 7:37 - 7:48 - no-gi, tournament, armbar, flying, joint lock
