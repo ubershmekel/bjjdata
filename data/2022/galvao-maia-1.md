@@ -8,4 +8,4 @@ Who: Pedro Maia
 
 Date: 2022
 
-Clip: 9:52 - 10:12 - tournament, gi, choke, side-triangle, middle-weight
+Clip: 9:52 - 10:13 - tournament, gi, choke, side-triangle, middle-weight

@@ -2,6 +2,8 @@
 	import { onMount, afterUpdate } from 'svelte';
 	import dataJson from '@gitroot/dist/data.json';
 	import type { MdData } from '@gitroot/tools/mds-to-jsons/types';
+	import { goto, afterNavigate } from '$app/navigation';
+	import { browser } from '$app/environment';
 
 	const allTagsSet: Set<string> = new Set();
 	for (const entry of dataJson.entries) {
@@ -14,6 +16,59 @@
 	const filters: { [tag: string]: boolean } = {};
 	for (const tag of allTags) {
 		filters[tag] = false;
+	}
+
+	const urlFilterSep = '+';
+	afterNavigate(({ type }) => {
+		console.log('afterNavigate type', type);
+		//  previousPage = from?.url.pathname || previousPage
+		if (type === 'goto') {
+			// avoid the infinite loop
+			return;
+		}
+		if (browser) {
+			// Activate the checkbox per the URL params
+			const filterText = window.location.search.replace('?f=', '');
+			const filterList = filterText.split(urlFilterSep);
+			for (const tag of filterList) {
+				if (tag.trim().length === 0) {
+					// URL might have nothing in it, '' is not a filter tag
+					continue;
+				}
+				filters[tag] = true;
+			}
+		}
+	});
+
+	function onFiltersChanged() {
+		console.log('onFiltersChanged');
+		const filtersChecked = [];
+		for (const key in filters) {
+			if (filters[key]) {
+				filtersChecked.push(key);
+			}
+		}
+		filtersChecked.sort();
+		const filtersString = filtersChecked.join(urlFilterSep);
+
+		let url = '?';
+		if (filtersString) {
+			url = '?f=' + filtersString;
+		}
+		if (window.location.search !== url) {
+			console.log('goto', window.location.search, url);
+			// Without `replaceState: true` there were all kinds of bugs to do with
+			// the back button triggering a `onFiltersChanged` which triggered a `goto`
+			// which made navigation broken.
+			goto(url, { replaceState: true });
+		}
+	}
+
+	$: if (filters) {
+		// Update URL when the filters change
+		if (browser) {
+			onFiltersChanged();
+		}
 	}
 
 	$: filteredEntries = function () {
@@ -89,7 +144,7 @@
 	function loopVideos() {
 		for (const key in ytPlayers) {
 			const player = ytPlayers[key];
-			if (player.getPlayerState() === 1) {
+			if (player.getPlayerState && player.getPlayerState() === 1) {
 				// playing
 				const timeSeconds = player.getCurrentTime();
 				const clip = playerEntries[key].clips[0];
