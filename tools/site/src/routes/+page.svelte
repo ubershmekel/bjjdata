@@ -188,7 +188,11 @@
 		}
 	}
 
-	afterUpdate(async () => {
+	function loadYouTube() {
+		if (!(window as any).YT) {
+			setTimeout(loadYouTube, 500);
+		}
+
 		for (const entry of filteredEntries()) {
 			const player = new (window as any).YT.Player(entry.id, {
 				events: {
@@ -198,6 +202,10 @@
 			ytPlayers[entry.id] = player;
 			playerEntries[entry.id] = entry;
 		}
+	}
+
+	afterUpdate(async () => {
+		loadYouTube();
 	});
 
 	function onPlayerStateChange(event: any) {
@@ -251,7 +259,7 @@
 					id={entry.id}
 					title={entry.title}
 					width="100%"
-					height="315"
+					height="415"
 					src={youtubeIframeLink(entry)}
 					frameborder="0"
 					allowfullscreen
