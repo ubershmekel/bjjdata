@@ -192,8 +192,11 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>BJJ Data</title>
+	<meta
+		name="description"
+		content="An open source collection of timestamped YouTube clips of tournament BJJ submissions"
+	/>
 </svelte:head>
 
 <section>
