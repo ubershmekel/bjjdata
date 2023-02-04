@@ -8,4 +8,4 @@ Who: Kade Ruotolo
 
 Who: PJ Barch
 
-Clip: 12:00 - 12:14 - no-gi, tournament, armbar, joint lock
+Clip: 12:00 - 12:14 - no-gi, tournament, armbar, joint-lock

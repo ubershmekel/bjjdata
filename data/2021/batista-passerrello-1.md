@@ -8,4 +8,4 @@ Who: Gustavo Batista
 
 Who: Christopher Passerrello
 
-Clip: 2:00 - 2:19 - tournament, gi, collar choke, cross collar choke, heavy-weight, top
+Clip: 2:00 - 2:19 - tournament, gi, collar-choke, cross collar-choke, heavy-weight, top

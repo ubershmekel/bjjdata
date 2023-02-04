@@ -8,4 +8,4 @@ Who: Wallace Costa
 
 Tags: tournament
 
-Clip: 6:10 - 6:17 - choke, bottom, loop choke
+Clip: 6:10 - 6:17 - choke, bottom, loop-choke

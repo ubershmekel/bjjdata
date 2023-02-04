@@ -8,4 +8,4 @@ Who: Lucas Barbosa
 
 Date: 2022
 
-Clip: 10:20 - 10:44 - gi, tournament, choke, back, sliding collar choke, middle-weight
+Clip: 10:20 - 10:44 - gi, tournament, choke, back, sliding-collar-choke, middle-weight

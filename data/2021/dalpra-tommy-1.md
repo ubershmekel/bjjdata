@@ -8,4 +8,4 @@ Who: Tainan Dalpra
 
 Who: Tommy Langaker
 
-Clip: 6:34-6:59 - tournament, collar choke, choke, back
+Clip: 6:34-6:59 - tournament, collar-choke, choke, back

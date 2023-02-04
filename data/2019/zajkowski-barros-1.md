@@ -8,4 +8,4 @@ Who: Jakub Zajkowski
 
 Who: Rafael Da Silva Barros
 
-Clip: 6:55 - 7:13 - tournament, gi, canto choke, choke, top
+Clip: 6:55 - 7:13 - tournament, gi, canto-choke, choke, top

@@ -8,4 +8,4 @@ Who: Servio Tulio
 
 Date: 2022
 
-Clip: 2:59 - 3:10 - tournament, gi, armbar, middle-weight, joint lock
+Clip: 2:59 - 3:10 - tournament, gi, armbar, middle-weight, joint-lock

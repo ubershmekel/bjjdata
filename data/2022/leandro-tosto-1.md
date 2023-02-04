@@ -8,4 +8,4 @@ Who: Leandro Lo
 
 Who: Bruno Tosto
 
-Clip: 8:48 - 9:14 - gi, tournament, sliding collar choke, back
+Clip: 8:48 - 9:14 - gi, tournament, sliding-collar-choke, back

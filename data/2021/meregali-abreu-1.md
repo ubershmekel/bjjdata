@@ -8,4 +8,4 @@ Who: Roberto "Cyborg" Abreu
 
 Date: 2021
 
-Clip: 2:55 - 3:10 - tournament, gi, choke, loop choke, bottom
+Clip: 2:55 - 3:10 - tournament, gi, choke, loop-choke, bottom

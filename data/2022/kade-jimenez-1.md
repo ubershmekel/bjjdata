@@ -8,4 +8,4 @@ Who: Kade Ruotolo
 
 Who: Roberto Jimenez
 
-Clip: 2:16 - 2:30 - no-gi, tournament, heel hook, joint lock
+Clip: 2:16 - 2:30 - no-gi, tournament, heel-hook, joint-lock

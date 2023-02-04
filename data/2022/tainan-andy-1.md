@@ -8,4 +8,4 @@ Who: Tainan Dalpra
 
 Who: Andy Murasaki
 
-Clip: 4:39 - 5:30 - tournament, choke, lapel choke, top, middle-weight, gi
+Clip: 4:39 - 5:30 - tournament, choke, lapel-choke, top, middle-weight, gi
