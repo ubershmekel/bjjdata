@@ -50,6 +50,10 @@
 		}
 	});
 
+	function arrayEquals(a: any[], b: any[]) {
+		return JSON.stringify(a) === JSON.stringify(b);
+	}
+
 	function onFiltersChanged() {
 		console.log('onFiltersChanged');
 		const filtersChecked = [];
@@ -65,8 +69,12 @@
 		if (filtersString) {
 			url = '?f=' + filtersString;
 		}
-		if (activeUrlFilters() !== filtersChecked) {
-			console.log(`goto from ${window.location.search} to ${url}`);
+		if (!arrayEquals(activeUrlFilters(), filtersChecked)) {
+			console.log(
+				`goto from ${window.location.search} to ${url}`,
+				activeUrlFilters(),
+				filtersChecked
+			);
 			// Without `replaceState: true` there were all kinds of bugs to do with
 			// the back button triggering a `onFiltersChanged` which triggered a `goto`
 			// which made navigation broken.
