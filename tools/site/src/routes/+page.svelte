@@ -51,12 +51,12 @@
 		filtersChecked.sort();
 		const filtersString = filtersChecked.join(urlFilterSep);
 
-		let url = '?';
+		let url = '.';
 		if (filtersString) {
 			url = '?f=' + filtersString;
 		}
 		if (window.location.search !== url) {
-			console.log('goto', window.location.search, url);
+			console.log(`goto from ${window.location.search} to ${url}`);
 			// Without `replaceState: true` there were all kinds of bugs to do with
 			// the back button triggering a `onFiltersChanged` which triggered a `goto`
 			// which made navigation broken.
