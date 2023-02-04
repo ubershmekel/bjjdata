@@ -19,6 +19,22 @@
 	}
 
 	const urlFilterSep = '+';
+
+	function activeUrlFilters() {
+		const filtersOn = [];
+		const filterText = window.location.search.replace('?f=', '');
+		const filterList = filterText.split(urlFilterSep);
+		for (const tag of filterList) {
+			if (tag.trim().length === 0) {
+				// URL might have nothing in it, '' is not a filter tag
+				continue;
+			}
+			filtersOn.push(tag.trim());
+		}
+		filtersOn.sort();
+		return filtersOn;
+	}
+
 	afterNavigate(({ type }) => {
 		console.log('afterNavigate type', type);
 		//  previousPage = from?.url.pathname || previousPage
@@ -28,13 +44,7 @@
 		}
 		if (browser) {
 			// Activate the checkbox per the URL params
-			const filterText = window.location.search.replace('?f=', '');
-			const filterList = filterText.split(urlFilterSep);
-			for (const tag of filterList) {
-				if (tag.trim().length === 0) {
-					// URL might have nothing in it, '' is not a filter tag
-					continue;
-				}
+			for (const tag of activeUrlFilters()) {
 				filters[tag] = true;
 			}
 		}
@@ -55,7 +65,7 @@
 		if (filtersString) {
 			url = '?f=' + filtersString;
 		}
-		if (window.location.search !== url) {
+		if (activeUrlFilters() !== filtersChecked) {
 			console.log(`goto from ${window.location.search} to ${url}`);
 			// Without `replaceState: true` there were all kinds of bugs to do with
 			// the back button triggering a `onFiltersChanged` which triggered a `goto`
