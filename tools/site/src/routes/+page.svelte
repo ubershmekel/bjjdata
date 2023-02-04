@@ -35,12 +35,16 @@
 		return filtersOn;
 	}
 
+	let hasPageEntered = false;
 	afterNavigate(({ type }) => {
 		console.log('afterNavigate type', type);
 		//  previousPage = from?.url.pathname || previousPage
 		if (type === 'goto') {
 			// avoid the infinite loop
 			return;
+		}
+		if (type === 'enter') {
+			hasPageEntered = true;
 		}
 		if (browser) {
 			// Activate the checkbox per the URL params
@@ -56,6 +60,10 @@
 
 	function onFiltersChanged() {
 		console.log('onFiltersChanged');
+		if (!hasPageEntered) {
+			// Give the URL a chance to update when we first load the page
+			return;
+		}
 		const filtersChecked = [];
 		for (const key in filters) {
 			if (filters[key]) {
@@ -78,7 +86,12 @@
 			// Without `replaceState: true` there were all kinds of bugs to do with
 			// the back button triggering a `onFiltersChanged` which triggered a `goto`
 			// which made navigation broken.
-			goto(url, { replaceState: true });
+			// goto(url, { replaceState: true });
+			// goto works in dev but on github pages it causes a refresh and throws an error:
+			// Error: Not found: /bjjdata/
+			// So let's keep this simple
+			const title = 'BJJ Data';
+			window.history.replaceState({}, title, url);
 		}
 	}
 
