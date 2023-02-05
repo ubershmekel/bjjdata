@@ -8,4 +8,4 @@ Who: Diogo Reis
 
 Who: Lucas Pinheiro
 
-Clip: - 9:20 9:47 - tournament, gi, toe-hold, joint-lock, light-weight
+Clip: - 9:20 - 9:47 - tournament, gi, toe-hold, joint-lock, light-weight
